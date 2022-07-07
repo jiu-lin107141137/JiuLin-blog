@@ -199,15 +199,15 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   #articleView{
-    min-height: 600px;
+    min-height: 650px;
+    padding-top: 10px;
   }
   #nav{
     width: 90%;
     margin: 0 auto;
     opacity: 0.8;
     padding: 0;
-    border-style: dashed;
-    border-color: gold;
+    box-shadow: 0 0 3px 3px #777777;
   }
   a, a:visited, a:hover{
     text-decoration: none;
@@ -232,7 +232,7 @@ export default {
     color: #AA22FF;
   }
   .my-container{
-    margin: 20px 30px 0px 30px;
+    margin: 30px 30px 0px 30px;
     display: flex;
     justify-content: space-between;
   }
@@ -247,9 +247,6 @@ export default {
     border-style: solid;
     border-width: 3px;
     border-radius: 10px;
-  }
-  #main{
-    height: 500px;
   }
   .fileContainer{
     margin-bottom: 10px;
