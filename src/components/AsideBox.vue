@@ -23,13 +23,14 @@
     </div>
     <div id="tagBox" class="borderChange">
       {{ $t("GENERAL.TAG") }}:<br>
-      <span v-for="item in (tagCount)" class="tag draw" @click="changeTag(item-1)">
+      <span v-for="item in (tagCount)" class="tag draw"  @click="changeTag(item-1)">
         <div class="m-0 p-0 d-inline text-nowrap pl-1">
            <font-awesome-icon icon="fa-solid fa-tag" /> 
           {{ $blog.tags[item-1] }}&nbsp;
           <font class="fileNumber">{{tagFileCount[item-1]}}</font>
         </div>
       </span>
+      </div>
     </div>
   </div>
 </template>
@@ -79,7 +80,6 @@ export default {
       for(var j = 0; j < this.$blog.article[i].tags.length; j++)
         this.tagFileCount[this.$blog.article[i].tags[j]]++;
     }
-    console.log(this.tagFileCount);
   }
 }
 </script>
@@ -234,13 +234,14 @@ export default {
     color: #FFAAAA;
   }
   .tag{
+    position: relative;
     border-radius: 4px;
     box-shadow: inset;
     background-color: #777777;
     /*padding: 0px 2px 0px 5px;*/
     margin-right: 10px;
     margin-top: 5px;
-    z-index: 5;
+    z-index: 10;
     font-size: 16px;
     color: #FFFFFF;
   }
