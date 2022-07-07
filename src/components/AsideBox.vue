@@ -115,11 +115,7 @@ export default {
   }
   #intro{
     margin-top: 10px;
-/*    border-width: 2px;
-    border-color: #FFCC00;
-    border-style: solid;
-    border-radius: 20px;*/
-    color: #FFCC00;
+    color: rgb(239, 156, 225);
     font-size: 18px;
   }
   .borderChange{

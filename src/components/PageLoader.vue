@@ -1,5 +1,5 @@
 <template>
-  <div id="page-loader" v-if="!isloaded">
+  <div id="page-loader">
     <div class="cube first" style="background-color: #8CC721;"></div>
     <div class="cube" style="background-color: #69BEEB;"></div>
     <div class="cube" style="background-color: #F5AA39;"></div>
@@ -12,15 +12,17 @@ export default {
   name: 'pageLoader',
   data () {
     return {
-      isloaded: false,
     }
   },
   mounted(){
-    document.onraedystatechange = () => {
-      if(document.raedystate == "complete")
-        this.isloaded = true;
+    window.onload = function(){
+      var timer = setTimeout(() => {
+          clearTimeout(timer);
+          var cleartimer = setTimeout(() => {
+            document.getElementById("page-loader").style.width = "0";
+          }, 1000);
+      })
     }
-    
   },
 }
 </script>
@@ -63,7 +65,7 @@ export default {
     }
   }
 
-  #first{
+  .first{
     animation: left 1s linear 0s infinite normal both;
     -webkit-animation: left 1s linear 0s infinite normal both;
     -moz-animation: left 1s linear 0s infinite normal both;
@@ -71,7 +73,7 @@ export default {
     -o-animation: left 1s linear 0s infinite normal both;
   }
 
-  #last{
+  .last{
     animation: right 1s linear .5s infinite normal both;
     -webkit-animation: right 1s linear .5s infinite normal both;
     -moz-animation: right 1s linear .5s infinite normal both;

@@ -2,7 +2,6 @@
   <div class="col-lg-8 col-md-8 col-sm-12" name="lectureResult">
     <div class="myCard" v-for="(data, index) in currentArticlesData" @click="toArticle(data.index)">
       <div class="title">{{ data.title }}</div>
-      <!-- <div class="content" v-html="currentArticlesContent[index]"></div> -->
       <div class="info">Last edited: {{ data.modified_at }}</div>
       <div class="tags">Tags:&nbsp;
         <span class="tag draw" v-for="tagIdx in data.tags" @click.stop="changeTag(tagIdx)">
@@ -24,8 +23,6 @@
 </template>
 
 <script>
-import { marked } from 'marked'
-
 export default {
   name: 'lectureResult',
   data () {
@@ -33,7 +30,6 @@ export default {
       allArticlesIndex: [],
       articlePerPage: 2,
       currentArticlesData: [],
-      currentArticlesContent: [],
       currentPage: 0,
       limit: "",
       pre: "",
@@ -70,12 +66,10 @@ export default {
       // console.log(this.currentPage);
       var prePageCount = this.currentPage*this.articlePerPage;
       this.currentArticlesData = [];
-      this.currentArticlesContent = [];
       for(var i = 0; i < this.articlePerPage && i+prePageCount < this.allArticlesIndex.length; i++){
         this.currentArticlesData.push(
           this.$blog.article[this.allArticlesIndex[i + prePageCount]]
         );
-        this.md2Html(this.currentArticlesData[i].folder, this.currentArticlesData[i].fileName)
       }
       // console.log(this.currentArticlesData);
     },
@@ -105,19 +99,6 @@ export default {
     },
     setSelectorValue: function(){
       this.selector.options.selectedIndex = this.currentPage;
-    },
-    md2Html: async function(folder, fileName){
-      var lang = localStorage.getItem('language') || 'en';
-      var path = (`./static/articles/${ this.$blog.folder[folder] }/${ lang }/${fileName}.md`);
-      await this.$http.get(path).then(
-        response => {
-          this.currentArticlesContent.push(marked(response.body));
-        },
-        response => {
-          // error callback
-          this.currentArticlesContent.push("An error ocurred");
-        }
-      );
     },
     getQueryString: function(){
       var params = this.$route.params;
@@ -181,7 +162,7 @@ export default {
     border-color: #FFF;
     border-style: solid;
     border-radius: 20px;
-    padding-top: 10px;
+    /*padding-top: 5px;*/
   }
   @media only screen and (max-width: 768px) {
     div[name=lectureResult] {
@@ -195,29 +176,31 @@ export default {
     margin: 0 auto;
     /*height: 300px;*/
     border-radius: 20px;
-    border-color: #FF5500;
-    border-width: 2px;
-    border-style: dashed;
-    text-align: left;
+    border-color: #442288;
+    /*border-width: 3px;*/
+    /*border-style: ;*/
     color: #FFFFFF;
+    box-shadow: 0 0 4px 4px #333333;
+    text-align: left;
     padding: 0 10px;
-    -webkit-transition: all 0.25s ease;
-    -moz-transition: all 0.25s ease;
-    -ms-transition: all 0.25s ease;
-    -o-transition: all 0.25s ease;
-    transition: all 0.25s ease;
-    margin-bottom: 10px;
+    -webkit-transition: all .1s ease;
+    -moz-transition: all .1s ease;
+    -ms-transition: all .1s ease;
+    -o-transition: all .1s ease;
+    transition: all .1s ease;
+    margin-top: 20px;
   }
   .myCard:hover{
-    border-width: 3px;
-    padding: 0 9px;
+    box-shadow: 0 0 6px 6px #333333;
+    /*border-width: 4px;*/
+    /*padding: 0 9px;*/
   }
   .title{
     border-bottom: dotted;
     border-width: 2px;
     border-color: #FFFFFF;
     font-size: 32px;
-    color: #FFFFFF;
+    color: rgb(220, 210, 244);
     overflow: hidden;
     -webkit-transition: all 0.25s ease;
     -moz-transition: all 0.25s ease;
@@ -226,7 +209,7 @@ export default {
     transition: all 0.25s ease;
   }
   .title:hover{
-    color: #FFCC00;
+    color: rgb(194, 124, 255);
   }
   .content{
     border-bottom: dotted;

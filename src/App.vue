@@ -1,7 +1,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.js" integrity="sha512-Mcz+Mt8k23j06ycA5EJGfyXbtzB6xqEoJxjGftQQoed/zQzem9Lt21LRymjlcm+NUsbF0LOHgfdN8LO8GtKDOw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <template>
   <div id="app">
-    <PageLoader />
+    <!-- <PageLoader /> -->
     <div class="filter" id="filter"></div>
     <canvas id="canvas"></canvas>
     <router-view name="navBarView"/>
@@ -14,9 +14,12 @@
 </template>
 
 <script>
-import PageLoader from '@/components/PageLoader'
+// import PageLoader from '@/components/PageLoader'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    // PageLoader
+  },
 }
 </script>
 
