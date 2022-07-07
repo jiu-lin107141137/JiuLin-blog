@@ -15,7 +15,7 @@
     </div>
     <div id="foldersBox" class="borderChange">
       <ul id="folderList" class="ulClass">
-        {{ $t("GENERAL.FOLDER") }}
+        {{ $t("GENERAL.FOLDER") }}:
         <li v-for="item in pairs" @click="search(item.name)" class="liForFolder">
           {{ item.name+": "+item.count }}
         </li>
@@ -24,7 +24,11 @@
     <div id="tagBox" class="borderChange">
       {{ $t("GENERAL.TAG") }}:<br>
       <span v-for="item in (tagCount)" class="tag draw" @click="changeTag(item-1)">
-        {{ $blog.tags[item-1] }}
+        <div class="m-0 p-0 d-inline text-nowrap pl-1">
+           <font-awesome-icon icon="fa-solid fa-tag" /> 
+          {{ $blog.tags[item-1] }}&nbsp;
+          <font class="fileNumber">{{tagFileCount[item-1]}}</font>
+        </div>
       </span>
     </div>
   </div>
@@ -38,6 +42,7 @@ export default {
       folderName: Array.from(this.$blog.folder),
       pairs: [],
       tagCount: this.$blog.tags.length,
+      tagFileCount: [],
     }
   },
   methods: {
@@ -68,6 +73,13 @@ export default {
         count: value.length,
       });
     }
+    for(var i = 0; i < this.tagCount; i++)
+      this.tagFileCount.push(0);
+    for(var i = 0; i < this.$blog.article.length; i++){
+      for(var j = 0; j < this.$blog.article[i].tags.length; j++)
+        this.tagFileCount[this.$blog.article[i].tags[j]]++;
+    }
+    console.log(this.tagFileCount);
   }
 }
 </script>
@@ -94,7 +106,7 @@ export default {
     width: 90%;
     margin-bottom: 10px;
     margin-top: 0px;
-    max-width: 300px;
+    max-width: 200px;
     display: block;
   }
   font[name=name]{
@@ -108,7 +120,7 @@ export default {
     border-style: solid;
     border-radius: 20px;*/
     color: #FFCC00;
-    font-size: 24px;
+    font-size: 18px;
   }
   .borderChange{
     position: relative;
@@ -151,8 +163,8 @@ export default {
          -o-transform: scale3d(1, 0, 1);
         -ms-transform: scale3d(1, 0, 1);
   }
-  #intro:hover, #foldersBox:hover, font[name=name]:hover {
-    color: #FFAAAA;
+  #intro:hover, #foldersBox:hover{
+    /*color: #FFAAAA;*/
     box-shadow: none;
   }
   .borderChange:hover::before, .borderChange:hover::after {
@@ -190,7 +202,7 @@ export default {
     cursor: pointer;
   }
   .liForFolder:hover{
-    color: #AA22FF;
+    color: #AAAAAA;
     text-decoration: underline;
   }
   #linkBox{
@@ -226,26 +238,18 @@ export default {
     color: #FFAAAA;
   }
   .tag{
-    border-radius: 15px;
+    border-radius: 4px;
     box-shadow: inset;
-    background-color: #AA00FF;
-    padding: 0px 2px 0px 5px;
+    background-color: #777777;
+    /*padding: 0px 2px 0px 5px;*/
     margin-right: 10px;
     margin-top: 5px;
     z-index: 5;
+    font-size: 16px;
     color: #FFFFFF;
   }
-  .draw{
-    position: relative;
-    /*z-index: 3;*/
-    font-size: 16px;
-    -webkit-transition: all .5s ease;
-    -moz-transition: all .5s ease;
-    -ms-transition: all .5s ease;
-    -o-transition: all .5s ease;
-    transition: all .5s ease;
-  }
-  .draw:hover{
-    font-size: 18px;
+  .fileNumber{
+    padding: 0 5px;
+    background: #555555;
   }
 </style>

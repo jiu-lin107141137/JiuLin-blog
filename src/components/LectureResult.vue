@@ -2,11 +2,14 @@
   <div class="col-lg-8 col-md-8 col-sm-12" name="lectureResult">
     <div class="myCard" v-for="(data, index) in currentArticlesData" @click="toArticle(data.index)">
       <div class="title">{{ data.title }}</div>
-      <div class="content" v-html="currentArticlesContent[index]"></div>
+      <!-- <div class="content" v-html="currentArticlesContent[index]"></div> -->
       <div class="info">Last edited: {{ data.modified_at }}</div>
       <div class="tags">Tags:&nbsp;
         <span class="tag draw" v-for="tagIdx in data.tags" @click.stop="changeTag(tagIdx)">
-          {{ $blog.tags[tagIdx] }}
+          <div class="m-0 p-0 d-inline-block flex-wrap">
+            <font-awesome-icon icon="fa-solid fa-tag" /> 
+            {{ $blog.tags[tagIdx] }}
+          </div>
         </span>
       </div>
     </div>
@@ -206,16 +209,24 @@ export default {
     margin-bottom: 10px;
   }
   .myCard:hover{
-    border-width: 5px;
-    padding: 0 7px;
+    border-width: 3px;
+    padding: 0 9px;
   }
   .title{
     border-bottom: dotted;
     border-width: 2px;
     border-color: #FFFFFF;
     font-size: 32px;
-    color: rgb(244, 124, 106);
+    color: #FFFFFF;
     overflow: hidden;
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -ms-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+  }
+  .title:hover{
+    color: #FFCC00;
   }
   .content{
     border-bottom: dotted;
@@ -230,9 +241,9 @@ export default {
     overflow: hidden;
   }
   .tag{
-    border-radius: 15px;
+    border-radius: 5px;
     box-shadow: inset;
-    background-color: #AA00FF;
+    background-color: #777777;
     padding: 0px 2px 0px 5px;
     margin-right: 10px;
     margin-top: 5px;

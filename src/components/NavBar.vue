@@ -1,13 +1,4 @@
 <template>
-<!--   <div name="navBar" class="nav">
-    <button class="navbar-toggler btn btn-info" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" name="menu">
-      <div class="d-inline form-inline" id="searchBox">
-      </div>
-    </div>
-  </div> -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light myNav">
     <h1 class="mr-auto" name="title"><router-link to="/">{{ $t('GENERAL.BLOG_NAME') }}</router-link></h1>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">

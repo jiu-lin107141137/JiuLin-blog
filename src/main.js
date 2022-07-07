@@ -9,12 +9,14 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
+import { faTag } from '@fortawesome/free-solid-svg-icons'
 import $blog from './Variables/BlogData.js'
 import VueResource from "vue-resource";
 
 library.add(faGithub)
 library.add(faEnvelope)
 library.add(faArrowUp)
+library.add(faTag)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 Vue.use($blog)
@@ -135,7 +137,7 @@ new Vue({
       dots = [],
       dotsMinDist = 2,
       params = {
-        maxDistFromCursor: 50,
+        maxDistFromCursor: 20,
         dotsSpeed: 0,
         backgroundSpeed: 0
       };

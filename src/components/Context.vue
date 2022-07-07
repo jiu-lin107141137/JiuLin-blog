@@ -86,7 +86,7 @@ export default {
     transition: all 1s ease;
   }
   #intro:hover { 
-    font-size: 2.5em;
+    font-size: 2.2em;
   }
   #container{
     margin: 20px 0px 0px 0px;
