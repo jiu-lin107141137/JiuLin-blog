@@ -24,7 +24,7 @@
     <div id="tagBox" class="borderChange">
       {{ $t("GENERAL.TAG") }}:<br>
       <span v-for="item in (tagCount)" class="tag draw">
-        <div class="m-0 p-0 d-inline text-nowrap pl-1">
+        <div class="m-0 p-0 d-inline text-nowrap pl-1" @click="changeTag(item-1)">
            <font-awesome-icon icon="fa-solid fa-tag" /> 
           {{ $blog.tags[item-1] }}&nbsp;
           <font class="fileNumber">{{tagFileCount[item-1]}}</font>
