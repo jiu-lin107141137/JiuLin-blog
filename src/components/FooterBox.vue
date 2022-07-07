@@ -29,7 +29,7 @@ export default {
   #footer{
     width: 100%;
     background-color: #555555;
-    height: 50px;
+    height: 30px;
     position: relative;
     bottom: 0px;
     margin-top: 20px;
@@ -44,7 +44,7 @@ export default {
     justify-content: space-between;
   }
   #leftFooter, #rightFooter{
-    font-size: 20px;
+    font-size: 14px;
     color: #FFFFFF;
   }
   a, a:visited, a:hover{
