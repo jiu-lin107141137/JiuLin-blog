@@ -108,7 +108,8 @@ export default {
       });
     },
     md2Html: async function(folder, fileName){
-      var path = (`./static/articles/${ this.$blog.folder[folder] }/${localStorage.getItem('language')}/${fileName}.md`);
+      var lang = localStorage.getItem('language') || 'en';
+      var path = (`./static/articles/${ this.$blog.folder[folder] }/${ lang }/${fileName}.md`);
       await this.$http.get(path).then(
         response => {
           this.currentArticleContent = (marked(response.body));

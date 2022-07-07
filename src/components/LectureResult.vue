@@ -104,7 +104,8 @@ export default {
       this.selector.options.selectedIndex = this.currentPage;
     },
     md2Html: async function(folder, fileName){
-      var path = (`./static/articles/${ this.$blog.folder[folder] }/${localStorage.getItem('language')}/${fileName}.md`);
+      var lang = localStorage.getItem('language') || 'en';
+      var path = (`./static/articles/${ this.$blog.folder[folder] }/${ lang }/${fileName}.md`);
       await this.$http.get(path).then(
         response => {
           this.currentArticlesContent.push(marked(response.body));
